@@ -29,6 +29,38 @@ Le système comprend 5 agents spécialisés:
 
 ## 🚀 Installation
 
+### ⚡ Installation Facile (Windows)
+
+Un script automatisé est disponible à la racine du dépôt (au-dessus de ce dossier) pour tout configurer en une seule étape. Deux façons de le lancer, au choix, depuis la racine du dépôt:
+
+**Option A — Double-clic (ou Invite de commandes / cmd.exe)**
+
+Double-cliquez simplement sur `setup.bat` dans l'explorateur Windows, ou depuis un terminal cmd:
+```bat
+setup.bat
+```
+
+**Option B — PowerShell**
+
+Depuis un terminal PowerShell, à la racine du dépôt:
+```powershell
+.\setup.ps1
+```
+(Si l'exécution de scripts est bloquée par la politique PowerShell, utilisez plutôt: `powershell -ExecutionPolicy Bypass -File .\setup.ps1`)
+
+Les deux options exécutent exactement le même script (`setup.bat` ne fait qu'appeler `setup.ps1`) et effectuent automatiquement:
+
+1. La création de l'environnement virtuel Python `env-macs` dans `MULTI-AGENT-CANDIDATE-SELECTION/`
+2. L'installation de toutes les dépendances Python (`requirements.txt`)
+3. L'installation des dépendances du frontend React (`npm install`)
+4. Un message final confirmant que tout est prêt, avec les commandes exactes pour démarrer le backend et le frontend
+
+**Prérequis pour ce script**: Python 3.9+ et Node.js 18+ doivent déjà être installés et accessibles depuis PATH.
+
+**Note espace disque**: l'installation complète (PyTorch, transformers, ChromaDB, modèles d'embedding) nécessite plusieurs Go d'espace libre.
+
+Une fois le script terminé, passez directement à l'étape [Configurer les clés API](#4-configurer-les-clés-api) ci-dessous.
+
 ### Prérequis
 
 - Python 3.9+

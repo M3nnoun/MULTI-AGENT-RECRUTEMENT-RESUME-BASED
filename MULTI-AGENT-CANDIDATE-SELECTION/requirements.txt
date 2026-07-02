@@ -1,15 +1,23 @@
 # Core dependencies for RAG System
+#
+# Version ranges are intentionally open-ended (no upper pins) so this file
+# keeps installing on newer Python releases. torchvision and
+# llama-index-llms-gemini were removed: neither is imported anywhere in
+# src/ (Gemini fallback goes through the plain google-generativeai SDK in
+# llm_fallback.py), and llama-index-llms-gemini's old Pillow pin (<11)
+# has no prebuilt wheels on recent Python versions, which breaks install.
+#
+# Pillow is pinned to a modern floor here so pip's resolver picks a
+# prebuilt wheel instead of trying (and failing) to compile an old one.
+pillow>=11.0.0
 
-# PyTorch - Core ML framework (compatible versions)
-torch>=2.0.0,<2.5.0
-torchvision>=0.15.0,<0.20.0
+# PyTorch - Core ML framework
+torch>=2.0.0
 
 # LlamaIndex - Core RAG framework
-llama-index>=0.10.0
 llama-index-core>=0.10.0
 llama-index-embeddings-huggingface>=0.1.0
 llama-index-llms-groq>=0.1.0
-llama-index-llms-gemini>=0.1.0
 llama-index-vector-stores-chroma>=0.1.0
 
 # Vector Database
@@ -20,13 +28,13 @@ pdfplumber>=0.10.0
 PyPDF2>=3.0.0
 pymupdf>=1.23.0
 
-# NLP and ML (compatible versions)
-sentence-transformers>=2.3.0,<3.0.0
-transformers>=4.35.0,<5.0.0
+# NLP and ML
+sentence-transformers>=2.3.0
+transformers>=4.35.0
 
 # Data processing
 pandas>=2.1.0
-numpy>=1.24.0,<2.0.0
+numpy>=1.24.0
 
 # Web interface
 streamlit>=1.29.0

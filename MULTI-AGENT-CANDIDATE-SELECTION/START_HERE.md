@@ -202,6 +202,14 @@ If port is in use, edit `backend_api.py` and change the port number.
 3. Ensure files are readable (not corrupted)
 4. Check disk space (vector database needs space)
 
+### Issue: Not enough disk space during `pip install`
+
+The full dependency set (PyTorch, transformers, chromadb, embedding models) needs **several GB of free disk space**. If `pip install` fails partway through with `No space left on device`, free up space and re-run `pip install -r requirements.txt` — pip will skip already-installed packages.
+
+### Issue: Backend crashes on startup with `UnicodeEncodeError`
+
+This affects Windows only. `backend_api.py` already forces UTF-8 stdout on Windows, so this shouldn't happen — but if you see it in a modified copy, either run with `set PYTHONUTF8=1` before starting, or use a terminal set to UTF-8 (Windows Terminal, or `chcp 65001` in cmd).
+
 ---
 
 ## 📊 Understanding the Results
